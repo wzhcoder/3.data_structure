@@ -43,9 +43,24 @@ void preorder_traverse(binary_tree_node **node)  //前序遍历
         printf("%c\r\n",(*node)->data);
         preorder_traverse(&(*node)->lchild);
         preorder_traverse(&(*node)->rchild);
-    }else{
-		printf("#\r\n");
-        //return;
+    }
+}
+
+void inorder_traverse(binary_tree_node **node)   //中序遍历
+{
+    if(*node){//节点非空
+        preorder_traverse(&(*node)->lchild);
+        printf("%c\r\n",(*node)->data);
+        preorder_traverse(&(*node)->rchild);
+    }
+}
+
+void postorder_traverse(binary_tree_node **node)   //后序遍历
+{
+    if(*node){//节点非空
+        postorder_traverse(&(*node)->lchild);
+        postorder_traverse(&(*node)->rchild);
+        printf("%c\r\n",(*node)->data);
     }
 }
 
@@ -65,7 +80,8 @@ int main(void)
 	// printf("root->l = %x \r\n",root->lchild);
 	// printf("root->r = %x \r\n",root->rchild);
 	
-    preorder_traverse(&root);
+    // preorder_traverse(&root);
+    postorder_traverse(&root);
 }
 
 
@@ -238,6 +254,28 @@ int main(void)
 // 	InOrderTraverse(T->lchild); /* 中序遍历左子树 */
 // 	printf("%c",T->data);/* 显示结点数据，可以更改为其它对结点操作 */
 // 	InOrderTraverse(T->rchild); /* 最后中序遍历右子树 */
+// }
+
+// in(a)
+// {
+//     in(a->l)
+//     {
+//         in(a->l->l)
+//         print b
+//         in(a->l->r)
+//         {
+//             in(a->l->r->l)
+//             print d
+//             in(a->l->r->r)
+//         }
+//     }
+//     print a
+//     in(a->r){
+//         in(a->l)
+//         print c
+//         in(a->r)
+
+//     }
 // }
 
 // /* 初始条件: 二叉树T存在 */
